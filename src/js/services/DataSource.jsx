@@ -11,8 +11,8 @@ class DataSource {
      *
      * @return {Promise}
      */
-    getNotification = async (apiUrl, deviceId, authorizationToken) => {
-        return await axios.get(`${apiUrl}/device${deviceId}/notification`, {
+    getNotifications = async (apiUrl, deviceId, authorizationToken) => {
+        return await axios.get(`${apiUrl}/device/${deviceId}/notification`, {
             headers: {
                 Authorization: authorizationToken
             }
