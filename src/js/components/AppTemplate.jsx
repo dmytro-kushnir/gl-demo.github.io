@@ -17,10 +17,10 @@ const AppTemplate = ({
                               <li className="Notification-Item"
                                   key={`key_${key}`}>
 
-                                  {new Date(Date.parse(notification["timestamp"])).toUTCString()}
-                                  {}
-
-                                  {JSON.parse(notification["notification"]
+                                  { notification["notification"] === "$device-update" ? ''
+                                      : new Date(Date.parse(notification["timestamp"])).toUTCString()}
+                                  {notification["notification"] === "$device-update" ? ''
+                                      : JSON.parse(notification["notification"]
                                       .replace(/([a-zA-Z0-9]+?):/g, '"$1":')
                                       .replace(/'/g, '"')).map((item) => {
                                           return (
@@ -29,16 +29,7 @@ const AppTemplate = ({
                                                   <p className="App-link">Probability -> <span>{item["score"].toFixed(2) * 100}%</span></p>
                                               </div>
                                              )
-
                                   })}
-
-                                  {/*{JSON.parse(notification["notification"]*/}
-                                  {/*    .replace(/([a-zA-Z0-9]+?):/g, '"$1":')*/}
-                                  {/*    .replace(/'/g, '"'))[0]['class_name']}*/}
-                                  {/*<p className="App-link">Probability -></p>*/}
-                                  {/*{JSON.parse(notification["notification"]*/}
-                                  {/*    .replace(/([a-zA-Z0-9]+?):/g, '"$1":')*/}
-                                  {/*    .replace(/'/g, '"'))[0]['score']}*/}
                               </li>
                           )
                       })}
